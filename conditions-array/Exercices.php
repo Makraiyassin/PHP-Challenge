@@ -83,20 +83,29 @@
 
     <?php
     
-        // 2. "Different greetings according to time" Exercise
+        date_default_timezone_set("Europe/Brussels");
 
-        $now = time(); // How to get the current time in PHP ? Google is your friend ;-)
+        // $now1 = new DateTime('now');
+        // var_dump($now1);
+        
+        // $now = getdate(); 
+        // $heure = $now['hours'];
+        // $min = $now['minutes'];
+        // var_dump($now);
 
-        $heure = (date("h",$now)+1) ;
-        $min = date("i",$now);
+        // $now2 = time();
+        // $heure = (date("h:i",$now2));
+        // $min = date("i",$now2);
         // $sec = (date("s",time()));
+        // var_dump($heure);
 
-        // Test the value of $now and display the right message according to the specifications.
-        if($heure >= 5 && $heure < 9){
+        $heure = date("H");
+
+        if($heure >= 5 && $heure <= 9){
             echo  "Good morning !";
-        }else if($heure >= 9 && $heure < 12){
+        }else if($heure >= 9 && $heure <= 12){
             echo  "Good day!";
-        }else if($heure >= 12 && $heure < 16){
+        }else if($heure > 12 && $heure < 16){
             echo  "Good afternoon!";
         }else if($heure >= 16 && $heure < 21){
             echo  "Good evening!";
@@ -214,18 +223,10 @@
         </form>
 
     <?php
-        $name2 = "";
-        $age = "";
-        $gender = "";
-
-        if(isset($_GET['name2'])){
-            $name2 = $_GET['name2'];
-        } 
-        if(isset($_GET['age2'])){
-            $age = $_GET['age2'] ;
-        }
         if(isset($_GET['gender2'])){
             $gender = $_GET['gender2'] ;
+            $age = $_GET['age2'] ;
+            $name2 = $_GET['name2'];
 
             $response = "<br> Sorry {$name2}, you don't fit the criteria"; //ex 6
 
