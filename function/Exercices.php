@@ -33,6 +33,7 @@
         echo "<br><br>";
 
         foreach ($array as $key => $value) {
+            // echo str_shuffle($value)." ";
             echo (strlen($value)<2) ? $value." " : ( $value[0].str_shuffle(substr($value, 1, -1)).$value[-1]." ");
         }
     ?>
@@ -79,10 +80,18 @@
     <h1>Exercice 6 </h1>
 
     <?php
-        function acronym($a,$b,$c,$d){
-            echo strtoupper($a[0]).strtoupper($b[0]).strtoupper($c[0]).strtoupper($d[0]);
+        // function acronym($a,$b,$c,$d){
+        //     echo strtoupper($a[0]).strtoupper($b[0]).strtoupper($c[0]).strtoupper($d[0]);
+        // }
+        // acronym("yassin","makrai","lamarti","azerty");
+
+        function acronym($string){
+            $array = explode(" ",$string);
+            foreach ($array as $key => $value) {
+                echo strtoupper(substr($value,0,1));
+            }
         }
-        acronym("yassin","makrai","lamarti","azerty");
+        acronym("yassin makrai lamarti azerty");        
     ?>
 
     <h1>Exercice 7 </h1>
@@ -93,6 +102,7 @@
             if (strpos($a, "ae")){
                 echo substr($a,0,strpos($a, "ae"))."æ".substr($a,(strpos($a, "ae"))+2);
             }
+            echo "<br>".str_ireplace("ae", "æ", $a);
         }
         replaces_letters ("caecotrophie") ;
     ?>
@@ -110,8 +120,6 @@
     ?>
 
     <h1>Exercice 9 & 10 </h1>
-
-    
 
     <?php
         function feedback( $msg,$css_class = "info"){
@@ -136,7 +144,6 @@
                 array_push($mots_7,$value);
             }
         }
-       
         echo $mots_5[rand(0,count($mots_5)-1)]." & ".$mots_7[rand(0,count($mots_7)-1)]."<br>";
     }
 
